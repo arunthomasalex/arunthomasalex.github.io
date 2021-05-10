@@ -6,14 +6,11 @@ module.exports = {
 	entry: path.join(__dirname, 'src', 'index.js'),
 	output: { 
 		path: path.join(__dirname, 'portfolio'), 
-		filename: 'build.[hash].js' 
+		filename: 'build.[chunkhash].js' 
 	},
 	mode: process.env.NODE_ENV || 'development',
-	// devtool: (process.env.NODE_ENV == 'production') ? 'source-map' : 'inline-source-map',
-	devtool: 'inline-source-map',
-	resolve: { 
-		modules: [path.resolve(__dirname, 'src'), 'node_modules'] 
-	},
+	devtool: (process.env.NODE_ENV == 'production') ? 'source-map' : 'inline-source-map',
+	// devtool: 'inline-source-map',
 	devServer: {
 		contentBase: path.join(__dirname, 'src')
 	},
@@ -22,7 +19,7 @@ module.exports = {
 			{
 				test: /\.(js|jsx)$/, 
 				exclude: /node_modules/, 
-				use: ['babel-loader'] 
+				loader: 'babel-loader'
 			},
 			{
 				test: /\.(css|scss)$/,
@@ -30,7 +27,7 @@ module.exports = {
 			},
 			{ 
 				test: /\.(jpg|jpeg|png|gif|mp3|svg)$/,
-				use: ['file-loader'] 
+				use: 'file-loader'
 			},
 		 ],
 	},
@@ -43,7 +40,7 @@ module.exports = {
 				root: ".",
 				test: [
 					{
-						folder: './public',
+						folder: './portfolio',
 						method: () => true,
 						recursive: true
 					}
