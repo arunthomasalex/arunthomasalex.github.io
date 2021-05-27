@@ -1,23 +1,21 @@
 //custom for social sites
 .fab {
-    width: 33px;
-    height: 30px;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    background-image: url('socialmedia.png');
+    background-size: 1350%; //number of images horizontally * 100
+    display:block;
 }
 
 .fa-facebook-f {
-    background: url('socialmedia.png') 3% 4% no-repeat;
-    display: inline-block;
-    background-size: 35vw;
+    background-position: 3.20% 3.8%;
 }
 .fa-twitter {
-    background: url('socialmedia.png') 14% 4% no-repeat;
-    display: inline-block;
-    background-size: 36vw;
+    background-position: 13.60% 4%;
 }
 .fa-linkedin-in {
-    background: url('socialmedia.png') 66% 4% no-repeat;
-    display: inline-block;
-    background-size: 35vw;
+    background-position: 65.50% 3.80%
 }
 .about-section {
     padding: 80px 0 80px;
@@ -38,7 +36,6 @@
     border-radius: 5px;
 }
 .about-section .about-img .social-links {
-    margin-top: 20px;
     text-align: center;
 }
 .about-section .about-info {

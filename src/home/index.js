@@ -1,2 +1,2 @@
 // module.exports = require('./Home.jsx');
-export { default } from './Home.jsx';
+export { default } from './Layout.jsx';

@@ -218,3 +218,6 @@ a.hover-in-shadow:hover:after, div.hover-in-shadow:hover:after {
     font-weight: 600;
     color: var(--skin-color);
 }
+html {
+    scroll-behavior: smooth;
+}

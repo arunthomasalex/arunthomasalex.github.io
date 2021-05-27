@@ -6,7 +6,7 @@ import './about.scss';
 export default class About extends Component {
     render() {
         return(
-            <section className="about-section section">
+            <section className="about-section section" id="about">
                 <div className="container">
                     <div className="row">
                         <div className="section-title">

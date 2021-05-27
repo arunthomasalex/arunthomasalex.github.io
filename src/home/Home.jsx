@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-
 import arun from './ArunThomasAlex.jpg';
 import './home.scss';
 
 export default class Home extends Component {
     render() {
-        return(
-            <section className="home-section section">
+        return (
+            <section className="home-section section" id="home">
                 <div className="effect-wrap">
                     <div className="effect effect-1"></div>
                     <div className="effect effect-2">
@@ -31,7 +29,8 @@ export default class Home extends Component {
                             <p>Hello</p>
                             <h2>I'm Arun Thomas Alex</h2>
                             <h1>Full stack Developer</h1>
-                            <Link className="btn-1 outer-shadow hover-in-shadow" to='/about'>More About Me</Link>
+                            {/* <Link className="btn-1 outer-shadow hover-in-shadow" to='/about'>More About Me</Link> */}
+                            <a href="#about" className="btn-1 outer-shadow hover-in-shadow">More About Me</a>
                         </div>
                         <div className="home-img">
                             <div className="img-box inner-shadow">
@@ -39,7 +38,7 @@ export default class Home extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>F
             </section>
         );
     }
