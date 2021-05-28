@@ -1,0 +1,40 @@
+{
+    "name": "Arun Thomas Alex",
+    "about": "<p><span>Hi! My name is Arun Thomas Alex and I'm a full stack developer.</span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>    <p> cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
+    "socialSites": [
+        {
+            "name": "facebook",
+            "url": "#"
+        },
+        {
+            "name": "twitter",
+            "url": "#"
+        },
+        {
+            "name": "linkedin",
+            "url": "#"
+        },
+        {
+            "name": "github",
+            "url": "https://github.com/arunthomasalex"
+        }
+    ],
+    "skills": [
+        {
+            "name": "html",
+            "percentage": 60
+        },
+        {
+            "name": "javascript",
+            "percentage": 80        
+        },
+        {
+            "name": "reactjs",
+            "percentage": 70
+        },
+        {
+            "name": "java",
+            "percentage": 85
+        }
+    ]
+}

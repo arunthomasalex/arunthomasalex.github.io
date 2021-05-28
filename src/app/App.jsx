@@ -6,7 +6,6 @@ import Header from './Header.jsx';
 import Home from '../home';
 import About from '../about';
 import Work from '../work';
-import Skills from '../skills';
 import Contact from '../contact';
 import './style.scss';
 import './header.scss';
