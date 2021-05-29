@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './commonsprite.png';
 import './socialmedia.png';
 import './about.scss';
 
@@ -18,12 +19,12 @@ function Skills(props) {
             <div className="skills tab-content">
                 <div className="row">
                     {props.skills.map(skill => {
-                        let percentCalc = "calc("+skill.percentage+"% - 14px)";
+                        let percentCalc = "calc(" + skill.percentage + "% - 14px)";
                         return (
                             <div key={skill.name} className="skill-item">
                                 <p>{skill.name}</p>
                                 <div className="progress inner-shadow">
-                                    <div className="progress-bar" style={{ "width": percentCalc}}>
+                                    <div className="progress-bar" style={{ "width": percentCalc }}>
                                         <span>{skill.percentage}%</span>
                                     </div>
                                 </div>
@@ -36,11 +37,37 @@ function Skills(props) {
     )
 }
 
+function Experience(props) {
+    return (
+        <div className="experience tab-content">
+            <div className="row">
+                <div className="timeline">
+                    <div className="row">
+                        {props.experiences.map(experience => {
+                            return (
+                                <div key={experience.company} className="timeline-item">
+                                    <div className="timeline-item-inner outer-shadow">
+                                        <i className="fas briefcase icon"></i>
+                                        <span>{experience.duration}</span>
+                                        <h3>{experience.post}</h3>
+                                        <h4>{experience.company}</h4>
+                                        <p>{experience.description}</p>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
 
 export default class About extends Component {
     render() {
         let { portfolio } = this.props;
-        return(
+        return (
             <section className="about-section section" id="about">
                 <div className="container">
                     <div className="row">
@@ -55,10 +82,10 @@ export default class About extends Component {
                             <div className="img-box inner-shadow">
                                 {portfolio && <img src={portfolio["image"]} alt="profile-pic" className="outer-shadow" />}
                             </div>
-                            {portfolio && <SocialSiteLinks links={portfolio["socialSites"]}/>}
+                            {portfolio && <SocialSiteLinks links={portfolio["socialSites"]} />}
                         </div>
                         <div className="about-info">
-                            {portfolio && <div dangerouslySetInnerHTML={{__html: portfolio["about"]}} />}
+                            {portfolio && <div dangerouslySetInnerHTML={{ __html: portfolio["about"] }} />}
                             <a href="#" className="btn-1 outer-shadow hover-in-shadow">Download CV</a>
                             <a href="#" className="btn-1 outer-shadow hover-in-shadow">Hire Me</a>
                         </div>
@@ -69,44 +96,10 @@ export default class About extends Component {
                             <span className="tab-item" data-taget=".experience">experience</span>
                             <span className="tab-item" data-taget=".education">education</span>
                         </div>
-                        {portfolio && <Skills skills={portfolio["skills"]}/>}
+                        {portfolio && <Skills skills={portfolio["skills"]} />}
                     </div>
                     <div className="row">
-                        <div className="experience tab-content">
-                            <div className="row">
-                                <div className="timeline">
-                                    <div className="row">
-                                        <div className="timeline-item">
-                                            <div className="timeline-item-inner">
-                                                <i className="fas fa-briefcase icon"></i>
-                                                <span>Sep, 2018</span>
-                                                <h3>full stack developer</h3>
-                                                <h4>Company name, india</h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                            </div>
-                                        </div>
-                                        <div className="timeline-item">
-                                            <div className="timeline-item-inner">
-                                                <i className="fas fa-briefcase icon"></i>
-                                                <span>Sep, 2017</span>
-                                                <h3>full stack developer</h3>
-                                                <h4>Company name, india</h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                            </div>
-                                        </div>
-                                        <div className="timeline-item">
-                                            <div className="timeline-item-inner">
-                                                <i className="fas fa-briefcase icon"></i>
-                                                <span>Sep, 2016</span>
-                                                <h3>full stack developer</h3>
-                                                <h4>Company name, india</h4>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {portfolio && <Experience experiences={portfolio["experiences"]} />}
                     </div>
                 </div>
             </section>
