@@ -1,7 +1,9 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const RemovePlugin = require('remove-files-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FileManagerPlugin = require('filemanager-webpack-plugin');
 
 module.exports = {
 	entry: path.join(__dirname, 'src', 'index.js'),
@@ -45,6 +47,20 @@ module.exports = {
 					recursive: true
 				}]
 			}
-		})
-	]
+		}),
+        new FileManagerPlugin({
+            events: {
+                onEnd: {
+                    copy: [
+                        { source: './*.json', destination: './portfolio' }
+                    ]
+                }
+            }
+        })
+	],
+	externals: {
+        config: JSON.stringify({
+            portfolioJson: 'https://raw.githubusercontent.com/arunthomasalex/arunthomasalex.github.io/master/src/_services/portfolio.json'
+        })
+    }
 };
