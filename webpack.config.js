@@ -60,7 +60,7 @@ module.exports = {
 	],
 	externals: {
         config: JSON.stringify({
-            portfolioJson: 'https://raw.githubusercontent.com/arunthomasalex/arunthomasalex.github.io/master/src/_services/portfolio.json'
+            portfolioJson: 'https://arunthomasalex.github.io/portfolio/portfolio.json'
         })
     }
 };

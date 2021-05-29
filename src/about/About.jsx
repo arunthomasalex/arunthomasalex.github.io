@@ -42,8 +42,12 @@ function Skills(props) {
 export default class About extends Component {
     constructor(props) {
         super(props);
-        this.state = {portfolio: {}};
-        portfolioService.getAsyncPortfolio().then(data => this.setState({portfolio:data}));
+        this.state = {
+            portfolio: null
+        };
+        portfolioService.getPortfolio()
+            .then(response => response.json())
+            .then(data => this.setState({portfolio: data}));
     }
     render() {
         let { portfolio } = this.state;
@@ -60,12 +64,12 @@ export default class About extends Component {
                     <div className="row">
                         <div className="about-img">
                             <div className="img-box inner-shadow">
-                                <img src={arun} alt="profile-pic" className="outer-shadow" />
+                                {portfolio && <img src={portfolio["image"]} alt="profile-pic" className="outer-shadow" />}
                             </div>
-                            {<SocialSiteLinks links={portfolioService.getPortfolio()["socialSites"]}/>}
+                            {portfolio && <SocialSiteLinks links={portfolio["socialSites"]}/>}
                         </div>
                         <div className="about-info">
-                            <div dangerouslySetInnerHTML={{__html: portfolioService.getPortfolio()["about"]}} />
+                            {portfolio && <div dangerouslySetInnerHTML={{__html: portfolio["about"]}} />}
                             <a href="#" className="btn-1 outer-shadow hover-in-shadow">Download CV</a>
                             <a href="#" className="btn-1 outer-shadow hover-in-shadow">Hire Me</a>
                         </div>
@@ -76,7 +80,7 @@ export default class About extends Component {
                             <span className="tab-item" data-taget=".experience">experience</span>
                             <span className="tab-item" data-taget=".education">education</span>
                         </div>
-                        <Skills skills={portfolioService.getPortfolio()["skills"]}/>
+                        {portfolio && <Skills skills={portfolio["skills"]}/>}
                     </div>
                 </div>
             </section>
