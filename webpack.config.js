@@ -52,7 +52,7 @@ module.exports = {
             events: {
                 onEnd: {
                     copy: [
-                        { source: './*.json', destination: './portfolio' }
+                        { source: './datas/*.json', destination: './portfolio' }
                     ]
                 }
             }

@@ -40,7 +40,13 @@ function Skills(props) {
 
 
 export default class About extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {portfolio: {}};
+        portfolioService.getAsyncPortfolio().then(data => this.setState({portfolio:data}));
+    }
     render() {
+        let { portfolio } = this.state;
         return(
             <section className="about-section section" id="about">
                 <div className="container">
@@ -56,7 +62,7 @@ export default class About extends Component {
                             <div className="img-box inner-shadow">
                                 <img src={arun} alt="profile-pic" className="outer-shadow" />
                             </div>
-                            <SocialSiteLinks links={portfolioService.getPortfolio()["socialSites"]}/>
+                            {<SocialSiteLinks links={portfolioService.getPortfolio()["socialSites"]}/>}
                         </div>
                         <div className="about-info">
                             <div dangerouslySetInnerHTML={{__html: portfolioService.getPortfolio()["about"]}} />
