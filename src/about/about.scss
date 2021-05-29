@@ -108,6 +108,10 @@ a.social-hover-in-shadow:hover {
 .about-section .tab-content {
     flex: 0 0 100%;
     max-width: 100%;
+    display: none;
+}
+.about-section .tab-content.active {
+    display: block;
 }
 .about-section .skills {
     padding: 0 0 40px;
@@ -196,6 +200,9 @@ a.social-hover-in-shadow:hover {
 }
 .briefcase {
     background-position: 41.6% 100%;
+}
+.certificate {
+    background-position: 33.25% 100%;
 }
 .about-section .timeline .timeline-item-inner:before {
     content: '';

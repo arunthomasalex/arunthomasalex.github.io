@@ -16,7 +16,7 @@ function SocialSiteLinks(props) {
 function Skills(props) {
     return (
         <div className="skills-tab">
-            <div className="skills tab-content">
+            <div className="skills tab-content active">
                 <div className="row">
                     {props.skills.map(skill => {
                         let percentCalc = "calc(" + skill.percentage + "% - 14px)";
@@ -64,19 +64,20 @@ function Experience(props) {
 }
 
 function Education(props) {
+    console.log(props);
     return (
         <div className="education tab-content">
             <div className="row">
                 <div className="timeline">
                     <div className="row">
-                        {props.educations.map(eduation => {
+                        {props.educations.map(education => {
                             return (
-                                <div key={eduation.course} className="timeline-item">
+                                <div key={education.course} className="timeline-item">
                                     <div className="timeline-item-inner outer-shadow">
-                                        <i className="fas briefcase icon"></i>
-                                        <span>{eduation.duration}</span>
-                                        <h3>{eduation.course}</h3>
-                                        <h4>{eduation.institution}</h4>
+                                        <i className="fas certificate icon"></i>
+                                        <span>{education.duration}</span>
+                                        <h3>{education.course}</h3>
+                                        <h4>{education.institution}</h4>
                                     </div>
                                 </div>
                             );
@@ -121,13 +122,13 @@ export default class About extends Component {
                             <span className="tab-item" data-taget=".experience">experience</span>
                             <span className="tab-item" data-taget=".education">education</span>
                         </div>
-                        {portfolio && <Skills skills={portfolio["skills"]} />}
+                        {portfolio && portfolio["skills"] && <Skills skills={portfolio["skills"]} />}
                     </div>
                     <div className="row">
-                        {portfolio && <Experience experiences={portfolio["experiences"]} />}
+                        {portfolio && portfolio["experiences"] && <Experience experiences={portfolio["experiences"]} />}
                     </div>
                     <div className="row">
-                        {portfolio && <Education eduations={portfolio["eduactions"]}/>}
+                        {portfolio && portfolio["educations"] && <Education educations={portfolio["educations"]}/>}
                     </div>
                 </div>
             </section>
