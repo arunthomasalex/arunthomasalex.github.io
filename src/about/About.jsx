@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { portfolioService } from '../_services';
-import arun from '../home/ArunThomasAlex.jpg';
 import './socialmedia.png';
 import './about.scss';
 
@@ -40,17 +38,8 @@ function Skills(props) {
 
 
 export default class About extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            portfolio: null
-        };
-        portfolioService.getPortfolio()
-            .then(response => response.json())
-            .then(data => this.setState({portfolio: data}));
-    }
     render() {
-        let { portfolio } = this.state;
+        let { portfolio } = this.props;
         return(
             <section className="about-section section" id="about">
                 <div className="container">
@@ -81,6 +70,43 @@ export default class About extends Component {
                             <span className="tab-item" data-taget=".education">education</span>
                         </div>
                         {portfolio && <Skills skills={portfolio["skills"]}/>}
+                    </div>
+                    <div className="row">
+                        <div className="experience tab-content">
+                            <div className="row">
+                                <div className="timeline">
+                                    <div className="row">
+                                        <div className="timeline-item">
+                                            <div className="timeline-item-inner">
+                                                <i className="fas fa-briefcase icon"></i>
+                                                <span>Sep, 2018</span>
+                                                <h3>full stack developer</h3>
+                                                <h4>Company name, india</h4>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                            </div>
+                                        </div>
+                                        <div className="timeline-item">
+                                            <div className="timeline-item-inner">
+                                                <i className="fas fa-briefcase icon"></i>
+                                                <span>Sep, 2017</span>
+                                                <h3>full stack developer</h3>
+                                                <h4>Company name, india</h4>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                            </div>
+                                        </div>
+                                        <div className="timeline-item">
+                                            <div className="timeline-item-inner">
+                                                <i className="fas fa-briefcase icon"></i>
+                                                <span>Sep, 2016</span>
+                                                <h3>full stack developer</h3>
+                                                <h4>Company name, india</h4>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

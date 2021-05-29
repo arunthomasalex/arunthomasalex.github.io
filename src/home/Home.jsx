@@ -1,20 +1,9 @@
 import React, { Component } from 'react';
-import arun from './ArunThomasAlex.jpg';
-import { portfolioService } from '../_services';
 import './home.scss';
 
 export default class Home extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            portfolio: {}
-        };
-        portfolioService.getPortfolio()
-            .then(response => response.json())
-            .then(data => this.setState({portfolio: data}));
-    }
     render() {
-        let { portfolio } = this.state;
+        let { portfolio } = this.props;
         return (
             <section className="home-section section" id="home">
                 <div className="effect-wrap">
@@ -38,7 +27,7 @@ export default class Home extends Component {
                     <div className="row full-screen align-item-center">
                         <div className="home-text">
                             <p>Hello</p>
-                            <h2>I'm {portfolio["name"]}</h2>
+                            {portfolio && <h2>I'm {portfolio["name"]}</h2>}
                             <h1>Full stack Developer</h1>
                             {/* <Link className="btn-1 outer-shadow hover-in-shadow" to='/about'>More About Me</Link> */}
                             <a href="#about" className="btn-1 outer-shadow hover-in-shadow">More About Me</a>
@@ -49,7 +38,7 @@ export default class Home extends Component {
                             </div>
                         </div>
                     </div>
-                </div>F
+                </div>
             </section>
         );
     }
