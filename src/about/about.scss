@@ -180,6 +180,15 @@ a.social-hover-in-shadow:hover {
     border-radius: 5px;
     position: relative;
 }
+.about-section .timeline .timeline-item-inner:before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 1px;
+    background-color: var(--bg-black-100);
+    top: 37px;
+    z-index: -1;
+}
 .fas {
     background-image: url("commonsprite.png");
     background-size: 1300%; //number of images horizontally * 100

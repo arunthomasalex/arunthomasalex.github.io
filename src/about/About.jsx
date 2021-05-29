@@ -63,6 +63,31 @@ function Experience(props) {
     );
 }
 
+function Education(props) {
+    return (
+        <div className="education tab-content">
+            <div className="row">
+                <div className="timeline">
+                    <div className="row">
+                        {props.educations.map(eduation => {
+                            return (
+                                <div key={eduation.course} className="timeline-item">
+                                    <div className="timeline-item-inner outer-shadow">
+                                        <i className="fas briefcase icon"></i>
+                                        <span>{eduation.duration}</span>
+                                        <h3>{eduation.course}</h3>
+                                        <h4>{eduation.institution}</h4>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
 
 export default class About extends Component {
     render() {
@@ -100,6 +125,9 @@ export default class About extends Component {
                     </div>
                     <div className="row">
                         {portfolio && <Experience experiences={portfolio["experiences"]} />}
+                    </div>
+                    <div className="row">
+                        {portfolio && <Education eduations={portfolio["eduactions"]}/>}
                     </div>
                 </div>
             </section>

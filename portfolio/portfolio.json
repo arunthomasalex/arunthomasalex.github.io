@@ -51,5 +51,17 @@
             "duration": "March 2014 - July 2016",
             "description": "Worked as a software engineer on some of the crucial porjects parallelly, and my worked was recognized for the effort that I have put."
         }
+    ],
+    "educations": [
+        {
+            "institution": "Amrita Vishwa Vidyapeetham University, Coimbatore",
+            "course": "Masters in Computer Application(MCA)",
+            "duration": "2010-2013"
+        },
+        {
+            "institution": "MG University, Kottayam",
+            "course": "Bachiler in Computer Application(BCA)",
+            "duration": "2006-2009"
+        }
     ]
 }
