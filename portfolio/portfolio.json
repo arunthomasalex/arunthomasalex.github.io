@@ -1,7 +1,7 @@
 {
     "name": "Arun Thomas Alex",
     "image": "https://avatars.githubusercontent.com/u/8640589?v=4",
-    "about": "<p><span>Hi! My name is Arun Thomas Alex and I'm a full stack developer.</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>    <p> cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
+    "about": "<p><span>Hi! My name is Arun Thomas Alex and I'm a full stack developer with a total experience of {experience} years.</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>    <p> cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>",
     "socialSites": [
         {
             "name": "facebook",
@@ -13,7 +13,7 @@
         },
         {
             "name": "linkedin",
-            "url": "#"
+            "url": "https://linkedin.com/in/arun-alex"
         },
         {
             "name": "github",
@@ -47,20 +47,24 @@
         },
         {
             "name": "grails",
-            "percentage": 75
+            "percentage": 85
+        },
+        {
+            "name": "spring boot",
+            "percentage": 80
         }
     ],
     "experiences": [
         {
             "company": "Finastra, Thiruvananthapuram, Kerala, India",
             "post": "Seniour Software Engineer",
-            "duration": "July 2016",
+            "duration": " 26 July 2016",
             "description": "I was able to be part of some of the crucial projects in the compant and for my work I'm recognized as the employee of the year for the last 4 consecutive year. I had the opertunity of work with architect team to identify and finalize technologies for the enhancement fo the product."
         },
         {
             "company": "Ospyn Technologies, Thiruvananthapuram, Kerala, India",
             "post": "Software Engineer",
-            "duration": "March 2014 - July 2016",
+            "duration": "3 March 2014 - 15 July 2016",
             "description": "Worked as a software engineer on some of the crucial porjects parallelly, and my worked was recognized for the effort that I have put."
         }
     ],

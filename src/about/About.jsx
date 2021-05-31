@@ -105,7 +105,9 @@ export default class About extends Component {
             skills: true,
             experience: false,
             education: false
-        }
+        };
+        this._createDatas.bind(this);
+        this._prepareString.bind(this);
     }
     changeTab(e) {
         console.log(e.target.getAttribute("data-target"));
@@ -116,10 +118,35 @@ export default class About extends Component {
             return state;
         })
     }
+    _createDatas(portfolio) {
+        let experience = portfolio['experiences'].map(data => data.duration).map(date => {
+            let dates = date.split('-');
+            if (dates.length > 1) {
+                return (Date.parse(dates[1]) - Date.parse(dates[0])) / 1000 / 60 / 60 / 24;
+            }
+            return (Date.now() - Date.parse(dates[0])) / 1000 / 60 / 60 / 24;
+        }).reduce((p, c) => p + c, 0);
+        experience /= 365;
+        console.log({ experience });
+        return { experience };
+    }
+    _prepareString(sentence, datas) {
+        let placeholders = sentence.match(/\{(.*?)\}/g);
+        placeholders?.forEach(placeholder => {
+            let text = placeholder.substring(1, placeholder.length - 1);
+            if (datas[text]) {
+                sentence = sentence.replace(placeholder, datas[text]);
+            }
+        })
+        console.log(sentence);
+        return sentence;
+    }
     render() {
         let { portfolio } = this.props;
         let { skills, experience, education } = this.state;
         let [skillStyle, experienceStyle, educationStyle] = [skills, experience, education].map(value => value ? "tab-item outer-shadow active" : "tab-item");
+        let datas = portfolio && this._createDatas(portfolio);
+        let about = portfolio && this._prepareString(portfolio["about"], datas);
         return (
             <section className="about-section section" id="about">
                 <div className="container">
@@ -138,7 +165,7 @@ export default class About extends Component {
                             {portfolio && <SocialSiteLinks links={portfolio["socialSites"]} />}
                         </div>
                         <div className="about-info">
-                            {portfolio && <div dangerouslySetInnerHTML={{ __html: portfolio["about"] }} />}
+                            {portfolio && <div dangerouslySetInnerHTML={{ __html: about }} />}
                             <a href="#" className="btn-1 outer-shadow hover-in-shadow">Download CV</a>
                             <a href="#" className="btn-1 outer-shadow hover-in-shadow">Hire Me</a>
                         </div>
@@ -151,7 +178,7 @@ export default class About extends Component {
                         </div>
                     </div>
                     {skills && portfolio && <Skills skills={portfolio["skills"]} active={skills} />}
-                    {experience && portfolio && <Experience experiences={portfolio["experiences"]} active={experience}/>}
+                    {experience && portfolio && <Experience experiences={portfolio["experiences"]} active={experience} />}
                     {education && portfolio && <Education educations={portfolio["educations"]} active={education} />}
                 </div>
             </section>
