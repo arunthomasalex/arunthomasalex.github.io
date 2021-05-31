@@ -110,11 +110,9 @@ export default class About extends Component {
         this._prepareString.bind(this);
     }
     changeTab(e) {
-        console.log(e.target.getAttribute("data-target"));
         this.setState((state) => {
             state = Object.assign(...Object.keys(state).map(k => ({ [k]: false })));
             state[e.target.getAttribute("data-target")] = true;
-            console.log(state);
             return state;
         })
     }
