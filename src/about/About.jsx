@@ -127,8 +127,10 @@ export default class About extends Component {
             return (Date.now() - Date.parse(dates[0])) / 1000 / 60 / 60 / 24;
         }).reduce((p, c) => p + c, 0);
         experience /= 365;
-        console.log({ experience });
-        return { experience: experience.toFixed(1) };
+        return { 
+            experience: experience.toFixed(1), 
+            name: portfolio["name"] 
+        };
     }
     _prepareString(sentence, datas) {
         let placeholders = sentence.match(/\{(.*?)\}/g);
@@ -138,7 +140,6 @@ export default class About extends Component {
                 sentence = sentence.replace(placeholder, datas[text]);
             }
         })
-        console.log(sentence);
         return sentence;
     }
     render() {
