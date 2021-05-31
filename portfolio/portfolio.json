@@ -30,12 +30,24 @@
             "percentage": 80        
         },
         {
-            "name": "reactjs",
-            "percentage": 70
+            "name": "python",
+            "percentage": 75
         },
         {
             "name": "java",
             "percentage": 85
+        },
+        {
+            "name": "groovy",
+            "percentage": 85
+        },
+        {
+            "name": "nodejs",
+            "percentage": 75
+        },
+        {
+            "name": "grails",
+            "percentage": 75
         }
     ],
     "experiences": [
