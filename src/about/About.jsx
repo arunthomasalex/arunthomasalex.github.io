@@ -128,7 +128,7 @@ export default class About extends Component {
         }).reduce((p, c) => p + c, 0);
         experience /= 365;
         console.log({ experience });
-        return { experience };
+        return { experience: experience.toFixed(1) };
     }
     _prepareString(sentence, datas) {
         let placeholders = sentence.match(/\{(.*?)\}/g);
