@@ -3,14 +3,14 @@
     "image": "https://avatars.githubusercontent.com/u/8640589?v=4",
     "about": "<p><span>Hi! My name is Arun Thomas Alex and I'm a full stack developer with a total experience of {experience} years.</span> I enjoy being challenged and engaging with projects that require me to work outside my comfort and knowledge set, as continuing to learn new languages and development techniques are important to me and the success of the organization that am work with. My key area of expertise is back end but I have an above average knowledge in the front end development as well.</p><p>I have work on both monolithic and microservice applications and was able to be part of the architect team on deciding the enhancement of the products.</p>",
     "socialSites": [
-        {
-            "name": "facebook",
-            "url": "#"
-        },
-        {
-            "name": "twitter",
-            "url": "#"
-        },
+        // {
+        //     "name": "facebook",
+        //     "url": "#"
+        // },
+        // {
+        //     "name": "twitter",
+        //     "url": "#"
+        // },
         {
             "name": "linkedin",
             "url": "https://linkedin.com/in/arun-alex"
