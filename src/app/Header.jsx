@@ -6,6 +6,7 @@ export default class Header extends Component {
         super(props)
     }
     enableMenu() {
+        this.props.refValue.current.style.opacity = 1;
         this.props.refValue.current.style.visibility = 'unset' ;
         this.props.refValue.current.style.zIndex =  99;
     }
