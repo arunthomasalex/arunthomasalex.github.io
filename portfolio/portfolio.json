@@ -89,7 +89,11 @@
             "name": "email",
             "class": "email",
             "data": "arunthomasalex@yahoo.co.in"
+        },
+        {
+            "name": "address",
+            "class": "address",
+            "data": "Vadakkemappilaveedu, Keshavapuram, Kerala- 690518"
         }
-        
     ]
 }

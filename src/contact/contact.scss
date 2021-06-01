@@ -2,15 +2,49 @@
     padding: 80px 0 80px;
     min-height: 100vh;
 }
+.contact-section .contact-item {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+    padding: 15px;
+    display: flex; 
+}
+.contact-item .contact-item-inner {
+    padding: 3px 15px;
+    border-radius: 5px;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
 .contact-item .contact-item-inner .icon {
     height: 40px;
     width: 40px;
     border: 1px solid var(--bg-black-100);
     border-radius: 50%;
+    font-size: 25px;
+    color: var(--skin-color);
+}
+.contact-item .contact-item-inner span {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--skin-color);
+    margin: 10px 0 10px;
+    text-transform: capitalize;
+}
+.contact-item .contact-item-inner p {
+      font-size: 16px;
+      color: var(--text-bock-600);
+      line-height: 26px;
+      margin: 0;
+      word-break: break-word;
 }
 .phone {
-    background-position: 8.3% 83%
+    background-position: 8.4% 83.3%;
 }
 .email {
-    background-position: 58.3% 58.3%;
+    background-position: 74.9% 83%;
+}
+.address {
+    background-position: 74.9% 83%;
 }
