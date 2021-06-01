@@ -5,10 +5,12 @@
     "socialSites": [
         {
             "name": "linkedin",
+            "class": "linkedin",
             "url": "https://linkedin.com/in/arun-alex"
         },
         {
             "name": "github",
+            "class": "github",
             "url": "https://github.com/arunthomasalex"
         }
     ],
@@ -71,5 +73,23 @@
             "course": "Bachiler in Computer Application(BCA)",
             "duration": "2006-2009"
         }
+    ],
+    "contacts": [
+        {
+            "name": "phone",
+            "class": "phone",
+            "data": "+91-9447761834"
+        },
+        {
+            "name": "phone",
+            "class": "phone",
+            "data": "+91-9447761834"
+        },
+        {
+            "name": "email",
+            "class": "email",
+            "data": "arunthomasalex@yahoo.co.in"
+        }
+        
     ]
 }

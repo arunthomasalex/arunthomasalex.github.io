@@ -7,7 +7,7 @@ function SocialSiteLinks(props) {
     return (
         <div className="social-links">
             {props.links?.map(link => {
-                return <a href={link.url} target="_blank" key={link.name} className="social-outer-shadow social-hover-in-shadow"><i className={"fab " + link.name}></i></a>
+                return <a href={link.url} target="_blank" key={link.name} className="social-outer-shadow social-hover-in-shadow"><i className={"fab " + link.class}></i></a>
             })}
         </div>
     )
