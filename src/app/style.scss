@@ -83,6 +83,7 @@ a.hover-in-shadow:after, div.hover-in-shadow:after {
     width: 100%;
     height: 100%;
     transition: all 0.3s ease;
+    z-index: -1;
 }
 a.hover-in-shadow:hover:after, div.hover-in-shadow:hover:after {
     box-shadow: var(--inner-shadow);
@@ -101,6 +102,7 @@ a.hover-in-shadow:hover:after, div.hover-in-shadow:hover:after {
     border-radius: 30px;
     transition: all 0.3s ease;
     display: inline-block;
+    border: none;
 }
 .btn-1:after {
     border-radius: 30px;

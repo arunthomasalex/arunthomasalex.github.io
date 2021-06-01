@@ -23,14 +23,21 @@ function ScrollToTop() {
 }
 
 export default class App extends Component {
+    constructor(props) {
+        super(props);
+    
+        this.menu = React.createRef();
+    }
+
+
     render() {
         return (
             <Router>
-                <Header />
+                <Header refValue={this.menu}/>
                 <ScrollToTop/>
-                <NavBar />
+                <NavBar refValue={this.menu}/>
                 <Switch>
-                    <Route exact path='/' component={Home} />
+                    <Route exact path='/' component={Home}/>
                     {/* <Route exact path='/about' component={About} />
                     <Route exact path='/work' component={Work} />
                     <Route exact path='/skills' component={Skills} />

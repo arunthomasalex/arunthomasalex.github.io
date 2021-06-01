@@ -1,3 +1,12 @@
+.phone {
+    background-position: 8.4% 83.3%;
+}
+.email {
+    background-position: 74.9% 83%;
+}
+.address {
+    background-position: 41.5% 75%;
+}
 .contact-section {
     padding: 80px 0 80px;
     min-height: 100vh;
@@ -22,7 +31,9 @@
     border: 1px solid var(--bg-black-100);
     border-radius: 50%;
     font-size: 25px;
-    color: var(--skin-color);
+}
+.contact-item .contact-item-inner .icon:hover {
+    background-color: var(--skin-color);
 }
 .contact-item .contact-item-inner span {
     display: block;
@@ -39,12 +50,42 @@
       margin: 0;
       word-break: break-word;
 }
-.phone {
-    background-position: 8.4% 83.3%;
+.contact-section .contact-form {
+    flex: 0 0 100%;
+    max-width: 100%;
 }
-.email {
-    background-position: 74.9% 83%;
+.contact-section .w-50 {
+    padding: 0 15px;
+    flex: 0 0 50%;
+    max-width: 50%;
 }
-.address {
-    background-position: 74.9% 83%;
+.contact-section .input-group {
+    margin: 0 0 25px;
+    transition: all 0.3s ease;
+    border-radius: 30px;
+}
+.contact-section .input-group:after {
+    border-radius: 30px;
+}
+.contact-section .input-group .input-control {
+    height: 45px;
+    display: block;
+    width: 100%;
+    border-radius: 30px;
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    padding: 0 15px;
+    color: var(--text-bock-700);
+}
+.contact-section .input-group textarea.input-control {
+    height: 184px;
+    padding-top: 15px;
+    resize: none;
+}
+.contact-section .submit-btn {
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: right;
+    padding: 0 15px;
 }
