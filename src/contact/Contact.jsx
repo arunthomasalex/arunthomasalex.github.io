@@ -56,13 +56,13 @@ function ContactForm() {
                     <div className="row">
                         <div className="w-50">
                             <div className="input-group outer-shadow">
-                                <input type="text" placeholder="Name" name="name" id="name" className="input-control" onChange={event => setName(event.target.value)}/>
+                                <input type="text" placeholder="Name" autoComplete="off" name="name" id="name" className="input-control" onChange={event => setName(event.target.value)}/>
                             </div>
                             <div className="input-group outer-shadow">
-                                <input type="text" placeholder="Email" name="email" id="email" className="input-control" onChange={event => setEmail(event.target.value)}/>
+                                <input type="text" placeholder="Email" autoComplete="off" name="email" id="email" className="input-control" onChange={event => setEmail(event.target.value)}/>
                             </div>
                             <div className="input-group outer-shadow">
-                                <input type="text" placeholder="Subject" name="subject" id="subject" className="input-control" onChange={event => setSubject(event.target.value)}/>
+                                <input type="text" placeholder="Subject" autoComplete="off" name="subject" id="subject" className="input-control" onChange={event => setSubject(event.target.value)}/>
                             </div>
                         </div>
                         <div className="w-50">
