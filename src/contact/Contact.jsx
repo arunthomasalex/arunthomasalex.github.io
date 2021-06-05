@@ -9,7 +9,8 @@ function Contacts(props) {
                 return (
                     <div key={contact.name} className="contact-item">
                         <div className="contact-item-inner outer-shadow">
-                            <i className={classes}></i>
+                            { contact.url && <a className={classes} href={contact.url}></a> }
+                            { !contact.url && <i className={classes}></i> }
                             <span>{contact.name}</span>
                             <p>{contact.data}</p>
                         </div>

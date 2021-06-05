@@ -32,9 +32,19 @@
     border-radius: 50%;
     font-size: 25px;
 }
-.contact-item .contact-item-inner .icon:hover {
+// .contact-item .contact-item-inner a {
+//     height: 40px;
+//     width: 40px;
+//     border: 1px solid var(--bg-black-100);
+//     border-radius: 50%;
+//     font-size: 25px;
+// }
+.contact-item .contact-item-inner .icon {
     background-color: var(--skin-color);
 }
+// .contact-item .contact-item-inner a:hover {
+//     background-color: var(--skin-color);
+// }
 .contact-item .contact-item-inner span {
     display: block;
     font-size: 16px;

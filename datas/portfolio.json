@@ -88,7 +88,8 @@
         {
             "name": "address",
             "class": "address",
-            "data": "Vadakkemappilaveedu, Keshavapuram, Kerala- 690518"
+            "data": "Vadakkemappilaveedu, Keshavapuram, Kerala- 690518",
+            "url": "https://www.google.com/maps/place/9%C2%B002'33.2%22N+76%C2%B032'08.3%22E/@9.0425417,76.5334408,17z/data=!4m5!3m4!1s0x0:0x0!8m2!3d9.0425556!4d76.5356389"
         }
     ]
 }
