@@ -89,3 +89,14 @@
     text-align: right;
     padding: 0 15px;
 }
+
+@media(max-width: 767px) {
+    .contact-section .w-50,
+    .contact-section .contact-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .contact-section .submit-btn {
+        text-align: center;
+    }
+}

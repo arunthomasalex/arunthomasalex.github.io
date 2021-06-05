@@ -1,12 +1,20 @@
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>
-            Arun Thomas Alex
-        </title>
-        <meta name="viewpport" content="width=device-width,initial-scale=1.0">
-    </head>
-    <body>
-        <div id="root"></div>
-    </body>
+
+<head>
+    <title>
+        Arun Thomas Alex
+    </title>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        window.addEventListener("load", () => {
+            document.querySelector(".preloader").classList.add("fade-out");
+            setTimeout(() => document.querySelector(".preloader").style.display = "none", 600 );
+        })
+    </script>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
 </html>

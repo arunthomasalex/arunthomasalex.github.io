@@ -166,7 +166,7 @@ export default class About extends Component {
                         <div className="about-info">
                             {portfolio && <div dangerouslySetInnerHTML={{ __html: about }} />}
                             <a href="#" className="btn-1 outer-shadow hover-in-shadow" onClick={() => alert("Not completed, working on this feature.")}>Download CV</a>
-                            <a href="#" className="btn-1 outer-shadow hover-in-shadow" onClick={() => alert("Not completed, working on this feature")}>Hire Me</a>
+                            <a href="#contact" className="btn-1 outer-shadow hover-in-shadow">Hire Me</a>
                         </div>
                     </div>
                     <div className="row">

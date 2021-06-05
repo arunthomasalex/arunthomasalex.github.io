@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 
 export default class NavBar extends Component {
     disableMenu() {
-        this.props.refValue.current.style.opacity = 0;
-        this.props.refValue.current.style.visibility = 'hidden' ;
-        this.props.refValue.current.style.zIndex =  -1;
+        document.querySelector("#root").classList.remove("disableScroll");
+        this.props.refValue.current.classList.remove("open");
+        this.props.fader.current.classList.add("active");
+        setTimeout(() =>this.props.fader.current.classList.remove("active"), 300);
     }
     render() {
         const disableMenu = this.disableMenu.bind(this);
