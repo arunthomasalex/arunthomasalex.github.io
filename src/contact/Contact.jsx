@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
+import config from 'config';
 import './contact.scss';
 
 function Contacts(props) {
@@ -9,8 +10,8 @@ function Contacts(props) {
                 return (
                     <div key={contact.name} className="contact-item">
                         <div className="contact-item-inner outer-shadow">
-                            { contact.url && <a className={classes} href={contact.url}></a> }
-                            { !contact.url && <i className={classes}></i> }
+                            {contact.url && <a className={classes} href={contact.url}></a>}
+                            {!contact.url && <i className={classes}></i>}
                             <span>{contact.name}</span>
                             <p>{contact.data}</p>
                         </div>
@@ -20,10 +21,33 @@ function Contacts(props) {
         </div>
     );
 }
-function ContactForm(props) {
+function ContactForm() {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [subject, setSubject] = useState('');
+    const [message, setMessage] = useState('');
     const onSubmit = (event) => {
         event.preventDefault();
-        alert("Not completed, working on this feature.");
+        var details = { name, email, subject, message };
+        console.log(details);
+        var formBody = [];
+        for (var property in details) {
+            var encodedKey = encodeURIComponent(property);
+            var encodedValue = encodeURIComponent(details[property]);
+            formBody.push(encodedKey + "=" + encodedValue);
+        }
+        formBody = formBody.join("&");
+
+        fetch(config.messageUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            body: formBody
+        })
+        .then(resp => resp.json())
+        .then(resp => alert(resp.message))
+        .catch(err => alert("Server unavailable, please try again later."));
     };
     return (
         <div className="row">
@@ -32,18 +56,18 @@ function ContactForm(props) {
                     <div className="row">
                         <div className="w-50">
                             <div className="input-group outer-shadow">
-                                <input type="text" placeholder="Name" name="name" id="name" className="input-control" />
+                                <input type="text" placeholder="Name" name="name" id="name" className="input-control" onChange={event => setName(event.target.value)}/>
                             </div>
                             <div className="input-group outer-shadow">
-                                <input type="text" placeholder="Email" name="email" id="email" className="input-control" />
+                                <input type="text" placeholder="Email" name="email" id="email" className="input-control" onChange={event => setEmail(event.target.value)}/>
                             </div>
                             <div className="input-group outer-shadow">
-                                <input type="text" placeholder="Subject" name="subject" id="subject" className="input-control" />
+                                <input type="text" placeholder="Subject" name="subject" id="subject" className="input-control" onChange={event => setSubject(event.target.value)}/>
                             </div>
                         </div>
                         <div className="w-50">
                             <div className="input-group outer-shadow">
-                                <textarea name="message" id="message" className="input-control" placeholder="Message"></textarea>
+                                <textarea name="message" id="message" className="input-control" placeholder="Message" onChange={event => setMessage(event.target.value)}></textarea>
                             </div>
                         </div>
                     </div>
