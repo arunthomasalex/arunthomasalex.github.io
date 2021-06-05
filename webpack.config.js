@@ -61,8 +61,8 @@ module.exports = {
 	externals: {
         config: JSON.stringify({
             portfolioJson: 'https://arunthomasalex.github.io/portfolio/portfolio.json',
-			// messageUrl: 'http://127.0.0.1:8000/message/'
-			messageUrl: 'https://portfolio-arunthomasalex.herokuapp.com/message/'
+			messageUrl: 'http://127.0.0.1:8000/message/'
+			// messageUrl: 'https://portfolio-arunthomasalex.herokuapp.com/message/'
         })
     }
 };
