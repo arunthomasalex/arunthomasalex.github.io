@@ -36,8 +36,11 @@ function ContactForm() {
             var encodedValue = encodeURIComponent(details[property]);
             formBody.push(encodedKey + "=" + encodedValue);
         }
+        setName('');
+        setEmail('');
+        setSubject('');
+        setMessage('');
         formBody = formBody.join("&");
-
         fetch(config.messageUrl, {
             method: 'POST',
             headers: {
@@ -45,9 +48,9 @@ function ContactForm() {
             },
             body: formBody
         })
-        .then(resp => resp.json())
-        .then(resp => alert(resp.message))
-        .catch(err => alert("Server unavailable, please try again later."));
+            .then(resp => resp.json())
+            .then(resp => alert(resp.message))
+            .catch(err => alert("Server unavailable, please try again later."));
     };
     return (
         <div className="row">
@@ -56,13 +59,13 @@ function ContactForm() {
                     <div className="row">
                         <div className="w-50">
                             <div className="input-group outer-shadow">
-                                <input type="text" placeholder="Name" autoComplete="off" name="name" id="name" className="input-control" onChange={event => setName(event.target.value)}/>
+                                <input type="text" placeholder="Name" autoComplete="off" name="name" id="name" className="input-control" onChange={event => setName(event.target.value)} />
                             </div>
                             <div className="input-group outer-shadow">
-                                <input type="text" placeholder="Email" autoComplete="off" name="email" id="email" className="input-control" onChange={event => setEmail(event.target.value)}/>
+                                <input type="text" placeholder="Email" autoComplete="off" name="email" id="email" className="input-control" onChange={event => setEmail(event.target.value)} />
                             </div>
                             <div className="input-group outer-shadow">
-                                <input type="text" placeholder="Subject" autoComplete="off" name="subject" id="subject" className="input-control" onChange={event => setSubject(event.target.value)}/>
+                                <input type="text" placeholder="Subject" autoComplete="off" name="subject" id="subject" className="input-control" onChange={event => setSubject(event.target.value)} />
                             </div>
                         </div>
                         <div className="w-50">
