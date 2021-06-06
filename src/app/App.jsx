@@ -54,10 +54,6 @@ export default class App extends Component {
                 <FadeEffect fader={this.fade}/>
                 <Switch>
                     <Route exact path='/' component={Home}/>
-                    {/* <Route exact path='/about' component={About} />
-                    <Route exact path='/work' component={Work} />
-                    <Route exact path='/skills' component={Skills} />
-                    <Route exact path='/contact' component={Contact} /> */}
                 </Switch>
             </Router>
         );

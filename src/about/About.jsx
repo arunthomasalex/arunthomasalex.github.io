@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {createDatas, prepareString} from '../_utils';
+import config from 'config';
 import './commonsprite.png';
 import './socialmedia.png';
 import './about.scss';
@@ -106,8 +108,6 @@ export default class About extends Component {
             experience: false,
             education: false
         };
-        this._createDatas.bind(this);
-        this._prepareString.bind(this);
     }
     changeTab(e) {
         this.setState((state) => {
@@ -116,36 +116,13 @@ export default class About extends Component {
             return state;
         })
     }
-    _createDatas(portfolio) {
-        let experience = portfolio['experiences'].map(data => data.duration).map(date => {
-            let dates = date.split('-');
-            if (dates.length > 1) {
-                return (Date.parse(dates[1]) - Date.parse(dates[0])) / 1000 / 60 / 60 / 24;
-            }
-            return (Date.now() - Date.parse(dates[0])) / 1000 / 60 / 60 / 24;
-        }).reduce((p, c) => p + c, 0);
-        experience /= 365;
-        return { 
-            experience: experience.toFixed(1), 
-            name: portfolio["name"] 
-        };
-    }
-    _prepareString(sentence, datas) {
-        let placeholders = sentence.match(/\{(.*?)\}/g);
-        placeholders?.forEach(placeholder => {
-            let text = placeholder.substring(1, placeholder.length - 1);
-            if (datas[text]) {
-                sentence = sentence.replace(placeholder, datas[text]);
-            }
-        })
-        return sentence;
-    }
     render() {
+        console.log(config);
         let { portfolio } = this.props;
         let { skills, experience, education } = this.state;
         let [skillStyle, experienceStyle, educationStyle] = [skills, experience, education].map(value => value ? "tab-item outer-shadow active" : "tab-item");
-        let datas = portfolio && this._createDatas(portfolio);
-        let about = portfolio && this._prepareString(portfolio["about"], datas);
+        let datas = portfolio && createDatas(portfolio);
+        let about = portfolio && prepareString(portfolio["about"], datas);
         return (
             <section className="about-section section" id="about">
                 <div className="container">
@@ -165,7 +142,7 @@ export default class About extends Component {
                         </div>
                         <div className="about-info">
                             {portfolio && <div dangerouslySetInnerHTML={{ __html: about }} />}
-                            <a href="#" className="btn-1 outer-shadow hover-in-shadow" onClick={() => alert("Not completed, working on this feature.")}>Download CV</a>
+                            <a href={config.resumeUrl} target="_blank" className="btn-1 outer-shadow hover-in-shadow">Download CV</a>
                             <a href="#contact" className="btn-1 outer-shadow hover-in-shadow">Hire Me</a>
                         </div>
                     </div>

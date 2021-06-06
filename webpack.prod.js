@@ -6,13 +6,16 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const FileManagerPlugin = require('filemanager-webpack-plugin');
 
 module.exports = {
-	entry: path.join(__dirname, 'src', 'index.js'),
+	entry: {
+        portfolio: path.join(__dirname, 'src', 'index.js'),
+		resume: path.join(__dirname, 'src', 'biodata.js')
+    },
 	output: { 
 		path: path.join(__dirname, 'portfolio'), 
-		filename: 'build.[chunkhash].js' 
+		filename: '[name].[chunkhash].js'
 	},
-	mode: process.env.NODE_ENV || 'development',
-	devtool: (process.env.NODE_ENV == 'production') ? 'source-map' : 'inline-source-map',
+	mode: 'production',
+	devtool: 'source-map',
 	devServer: {
 		contentBase: path.join(__dirname, 'src')
 	},
@@ -37,6 +40,13 @@ module.exports = {
 		new MiniCssExtractPlugin(),
 		new HtmlWebpackPlugin({
 			template: path.join(__dirname, 'src', 'index.html'),
+			filename: 'index.html',
+			chunks: ['portfolio']
+		}),
+		new HtmlWebpackPlugin({
+			template: path.join(__dirname, 'src', 'biodata.html'),
+			filename: 'resume.html',
+			chunks: ['resume']
 		}),
 		new RemovePlugin({
 			before: {
@@ -61,8 +71,8 @@ module.exports = {
 	externals: {
         config: JSON.stringify({
             portfolioJson: 'https://arunthomasalex.github.io/portfolio/portfolio.json',
-			messageUrl: 'http://127.0.0.1:8000/message/'
-			// messageUrl: 'https://portfolio-arunthomasalex.herokuapp.com/message/'
+			messageUrl: 'https://portfolio-arunthomasalex.herokuapp.com/message/',
+			resumeUrl: 'resume.html'
         })
     }
 };

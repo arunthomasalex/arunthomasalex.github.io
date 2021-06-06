@@ -49,7 +49,7 @@ function ContactForm() {
         })
             .then(resp => resp.json())
             .then(resp => alert(resp.message))
-            .catch(err => alert("Server unavailable, please try again later."));
+            .catch(err => alert("Server unavailable, please Email me or try again later."));
     };
     return (
         <div className="row">
