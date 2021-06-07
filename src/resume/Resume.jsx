@@ -184,7 +184,7 @@ export default class Resume extends Component {
                     </div>
                     <Experience experiences={portfolio['experiences']} />
                     <Education educations={portfolio['educations']} />
-                    <div className="resume_item resume_hobby">
+                    {/* <div className="resume_item resume_hobby">
                         <div className="title">
                             <p className="bold">Hobby</p>
                         </div>
@@ -194,7 +194,7 @@ export default class Resume extends Component {
                             <li><i className="fas fa-music"></i></li>
                             <li><i className="fab fa-pagelines"></i></li>
                         </ul>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );
