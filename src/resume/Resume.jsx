@@ -1,7 +1,64 @@
 import React, { Component } from 'react';
 import './style.scss';
 import { portfolioService } from '../_services';
-import { createDatas, prepareString } from '../_utils';
+import { createDatas, prepareString, groupBy } from '../_utils';
+
+function Contact(props) {
+    return (
+        <div className="resume_item resume_info">
+            <div className="title">
+                <p className="bold">{props.portfolio.name}</p>
+                <p className="regular">{props.portfolio.title}</p>
+            </div>
+            <ul>
+                {props.portfolio.contacts.sort((c1, c2) => (c1.name < c2.name) ? -1 : 1).map(contact => {
+                    return (<li key={contact.name}>
+                        <div className="data">
+                            {contact.data}
+                        </div>
+                    </li>);
+                })}
+                <li>
+                    <div className="data">
+                        https://arunthomasalex.github.io
+                    </div>
+                </li>
+            </ul>
+        </div>
+    );
+}
+
+function Skill(props) {
+    return (
+        <div className="resume_item resume_skills">
+            <div className="title">
+                <p className="bold">skill's</p>
+            </div>
+            <ul>
+                {Object.entries(groupBy(props.skills, 'percentage'))
+                    .sort((s1, s2) => (parseInt(s1[0]) > parseInt(s2[0])) ? -1 : 1)
+                    .map(d => {
+                        let percent = d[0] + "%"
+                        return (
+                            <li key={percent}>
+                                <div className="skill_name">
+                                    {d[1].map(v => {
+                                        const str= v.name.toLowerCase();
+                                        return str.charAt(0).toUpperCase() + str.slice(1);
+                                    }).join(' / ')}
+                                    <div className="skill_per">{percent}</div>
+                                </div>
+                                <div className="skill_progress">
+                                    <span style={{ width: percent }}></span>
+                                </div>
+                            </li>
+                        )
+                    })
+                }
+            </ul>
+        </div>
+    );
+}
 
 function Experience(props) {
     return (
@@ -12,7 +69,7 @@ function Experience(props) {
             <ul>
                 {props.experiences.map(experience => {
                     return (
-                        <li>
+                        <li key={experience.duration}>
                             <div className="date">{experience.duration}</div>
                             <div className="info">
                                 <p className="semi-bold">{experience.company}</p>
@@ -23,7 +80,7 @@ function Experience(props) {
                 })}
             </ul>
         </div>
-    )
+    );
 }
 
 function Education(props) {
@@ -35,7 +92,7 @@ function Education(props) {
             <ul>
                 {props.educations.map(education => {
                     return (
-                        <li>
+                        <li key={education.duration}>
                             <div className="date">{education.duration}</div>
                             <div className="info">
                                 <p className="semi-bold">{education.course}</p>
@@ -46,7 +103,7 @@ function Education(props) {
                 })}
             </ul>
         </div>
-    )
+    );
 }
 
 export default class Resume extends Component {
@@ -71,86 +128,8 @@ export default class Resume extends Component {
                         <img src={portfolio.image} alt="profile_pic" />
                     </div>
                     <div className="resume_content">
-                        <div className="resume_item resume_info">
-                            <div className="title">
-                                <p className="bold">{portfolio.name}</p>
-                                <p className="regular">{portfolio.designation}</p>
-                            </div>
-                            <ul>
-                                <li>
-                                    <div className="data">
-                                        Vadakkemappilaveedu, <br /> Keshavapuram, <br />Kerala-69018
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="data">
-                                        +91-944761834
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="data">
-                                        arunthomasalex@yahoo.co.in
-                                    </div>
-                                </li>
-                                <li>
-                                    <div className="data">
-                                        https://arunthomasalex.github.io
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="resume_item resume_skills">
-                            <div className="title">
-                                <p className="bold">skill's</p>
-                            </div>
-                            <ul>
-                                <li>
-                                    <div className="skill_name">
-                                        HTML
-                                        </div>
-                                    <div className="skill_progress">
-                                        <span style={{ width: "60%" }}></span>
-                                    </div>
-                                    <div className="skill_per">60%</div>
-                                </li>
-                                <li>
-                                    <div className="skill_name">
-                                        Javascript
-                                        </div>
-                                    <div className="skill_progress">
-                                        <span style={{ width: "80%" }}></span>
-                                    </div>
-                                    <div className="skill_per">80%</div>
-                                </li>
-                                <li>
-                                    <div className="skill_name">
-                                        Java/Groovy
-                                        </div>
-                                    <div className="skill_progress">
-                                        <span style={{ width: "85%" }}></span>
-                                    </div>
-                                    <div className="skill_per">85%</div>
-                                </li>
-                                <li>
-                                    <div className="skill_name">
-                                        Nodejs/Python
-                                        </div>
-                                    <div className="skill_progress">
-                                        <span style={{ width: "75%" }}></span>
-                                    </div>
-                                    <div className="skill_per">75%</div>
-                                </li>
-                                <li>
-                                    <div className="skill_name">
-                                        Python
-                                        </div>
-                                    <div className="skill_progress">
-                                        <span style={{ width: "75%" }}></span>
-                                    </div>
-                                    <div className="skill_per">75%</div>
-                                </li>
-                            </ul>
-                        </div>
+                        <Contact portfolio={portfolio} />
+                        <Skill skills={portfolio['skills']} />
                         {/* <div className="resume_item resume_social">
                             <div className="title">
                                 <p className="bold">Social</p>
@@ -199,7 +178,7 @@ export default class Resume extends Component {
                 <div className="resume_right">
                     <div className="resume_item resume_about">
                         <div className="title">
-                            <p className="bold">About us</p>
+                            <p className="bold">About Me</p>
                         </div>
                         <div dangerouslySetInnerHTML={{ __html: about }}></div>
                     </div>
