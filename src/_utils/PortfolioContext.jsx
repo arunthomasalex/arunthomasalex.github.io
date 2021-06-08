@@ -1,7 +1,15 @@
 import React from 'react';
 
-const PortfolioContext = React.createContext({
+export const PortfolioContext = React.createContext({
     portfolio: void 0
 });
 
-export default PortfolioContext;
+export const withPortfolioContext = (Component) => {
+    return (props) => {
+        return(
+            <PortfolioContext.Consumer>
+                {(context) => <Component  {...props} {...context}/>}
+            </PortfolioContext.Consumer>
+        );
+    }
+}
