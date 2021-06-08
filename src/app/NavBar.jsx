@@ -15,11 +15,11 @@ export default class NavBar extends Component {
                 <div className="nav-menu-inner">
                     <ul>
                         <li><a className="inner-shadow active" href="/">Welcome</a></li>
-                        <li><a className="outer-shadow hover-in-shadow" href="/#about" onClick={disableMenu}>About</a></li>
-                        <li><a className="outer-shadow hover-in-shadow" href="/#about" onClick={disableMenu}>Skills</a></li>
-                        <li><a className="outer-shadow hover-in-shadow" href="/#about" onClick={disableMenu}>Experience</a></li>
-                        <li><a className="outer-shadow hover-in-shadow" href="/#about" onClick={disableMenu}>Education</a></li>
-                        <li><a className="outer-shadow hover-in-shadow" href="/#contact" onClick={disableMenu}>Contact</a></li>
+                        <li><a className="outer-shadow hover-in-shadow" href="#about" onClick={disableMenu}>About</a></li>
+                        <li><a className="outer-shadow hover-in-shadow" href="#about" onClick={disableMenu}>Skills</a></li>
+                        <li><a className="outer-shadow hover-in-shadow" href="#about" onClick={disableMenu}>Experience</a></li>
+                        <li><a className="outer-shadow hover-in-shadow" href="#about" onClick={disableMenu}>Education</a></li>
+                        <li><a className="outer-shadow hover-in-shadow" href="#contact" onClick={disableMenu}>Contact</a></li>
                     </ul>
                 </div>
                 <p className="copyright-text">&copy; 2020 The Webshala</p>
