@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { withPortfolioContext } from '../_utils';
 import './home.scss';
 
-export default class Home extends Component {
+class HomeComponent extends Component {
     render() {
         let { portfolio } = this.props;
         return (
@@ -43,3 +44,6 @@ export default class Home extends Component {
         );
     }
 }
+
+const Home = withPortfolioContext(HomeComponent)
+export default Home;

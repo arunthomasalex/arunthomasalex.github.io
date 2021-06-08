@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {createDatas, prepareString} from '../_utils';
+import {createDatas, prepareString, withPortfolioContext} from '../_utils';
 import config from 'config';
 import './commonsprite.png';
 import './socialmedia.png';
@@ -100,7 +100,7 @@ function Education(props) {
 }
 
 
-export default class About extends Component {
+class AboutComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -117,7 +117,6 @@ export default class About extends Component {
         })
     }
     render() {
-        console.log(config);
         let { portfolio } = this.props;
         let { skills, experience, education } = this.state;
         let [skillStyle, experienceStyle, educationStyle] = [skills, experience, education].map(value => value ? "tab-item outer-shadow active" : "tab-item");
@@ -161,3 +160,6 @@ export default class About extends Component {
         );
     }
 }
+
+const About = withPortfolioContext(AboutComponent);
+export default About;

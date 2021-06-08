@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import config from 'config';
 import './contact.scss';
+import { withPortfolioContext } from '../_utils';
 
 function Contacts(props) {
     return (
@@ -84,7 +85,7 @@ function ContactForm() {
     )
 }
 
-export default class Contact extends Component {
+class ContactComponent extends Component {
     render() {
         let { portfolio } = this.props;
         return (
@@ -102,3 +103,6 @@ export default class Contact extends Component {
         );
     }
 }
+
+const Contact = withPortfolioContext(ContactComponent);
+export default Contact;
