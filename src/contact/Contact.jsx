@@ -36,7 +36,7 @@ async function validateData(details) {
                         validation[key] = (length.min && (details[key].length < length.min)) || (length.max && details[key] && details[key].length > length.max);
                 }
                 if(email && !validation[key]) {
-                    validation[key] = !/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(details[key]);
+                    validation[key] = !/^[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[A-Za-z]+)+$/.test(details[key]);
                 }
             }
         }
@@ -45,7 +45,7 @@ async function validateData(details) {
     } catch(e) {
         let validation = {
             name: !details.name,
-            email: !/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(details.email),
+            email: !/^[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[A-Za-z]+)+$/.test(details.email),
             subject: !details.subject,
             message: !details.message
         };
