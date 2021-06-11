@@ -23,14 +23,35 @@ function Contacts(props) {
     );
 }
 
-function validateData({ name, email, subject, message }) {
-    let validation = new Object();
-    validation.name = !name;
-    validation.email = !/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email);
-    validation.subject = !subject;
-    validation.message = !message
-    validation.valid = () => !Object.values(validation).includes(true);
-    return validation;
+async function validateData(details) {
+    try {
+        const resp = await fetch(`${config.rules}/message`);
+        const rules = await resp.json();
+        let validation = {};
+        for (let index in rules) {
+            for (let [key, value] of Object.entries(rules[index])) {
+                validation[key] = value.required && !details[key];
+                let { length, email } = value.validations;
+                if(details[key] && length && !validation[key]) {
+                        validation[key] = (length.min && (details[key].length < length.min)) || (length.max && details[key] && details[key].length > length.max);
+                }
+                if(email && !validation[key]) {
+                    validation[key] = !/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(details[key]);
+                }
+            }
+        }
+        validation.valid = () => !Object.values(validation).includes(true);
+        return validation;
+    } catch(e) {
+        let validation = {
+            name: !details.name,
+            email: !/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(details.email),
+            subject: !details.subject,
+            message: !details.message
+        };
+        validation.valid = () => !Object.values(validation).includes(true);
+        return validation;
+    }
 }
 function ContactForm() {
     const [name, setName] = useState('');
@@ -41,33 +62,33 @@ function ContactForm() {
     const onSubmit = (event) => {
         event.preventDefault();
         var details = { name, email, subject, message };
-        let validation = validateData(details);
-        if(validation.valid()) {
-            var formBody = [];
-            for (var property in details) {
-                var encodedKey = encodeURIComponent(property);
-                var encodedValue = encodeURIComponent(details[property]);
-                formBody.push(encodedKey + "=" + encodedValue);
+        validateData(details).then(validation => {
+            console.log(validation);
+            if (validation.valid()) {
+                var formBody = [];
+                for (let [key, value] of Object.entries(details)) {
+                    formBody.push(encodeURIComponent(key) + "=" + encodeURIComponent(value));
+                }
+                formBody = formBody.join("&");
+                fetch(config.messageUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+                    },
+                    body: formBody
+                })
+                    .then(resp => resp.json())
+                    .then(resp => alert(resp.message))
+                    .catch(err => alert("Server unavailable, please Email me or try again later."));
+                setName('');
+                setEmail('');
+                setSubject('');
+                setMessage('');
+                setValidation({});
+            } else {
+                setValidation(validation);
             }
-            setName('');
-            setEmail('');
-            setSubject('');
-            setMessage('');
-            formBody = formBody.join("&");
-            fetch(config.messageUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-                },
-                body: formBody
-            })
-                .then(resp => resp.json())
-                .then(resp => alert(resp.message))
-                .catch(err => alert("Server unavailable, please Email me or try again later."));
-            setValidation({});
-        } else {
-            setValidation(validation);
-        }
+        });
     };
     return (
         <div className="row">

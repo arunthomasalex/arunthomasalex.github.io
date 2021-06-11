@@ -42,7 +42,8 @@ module.exports = merge(common, {
         config: JSON.stringify({
             portfolioJson: 'https://arunthomasalex.github.io/portfolio/portfolio.json',
 			messageUrl: 'https://portfolio-arunthomasalex.herokuapp.com/message/',
-			resumeUrl: 'resume.html'
+			resumeUrl: 'resume.html',
+			rules: 'https://portfolio-arunthomasalex.herokuapp.com/rule'
         })
     }
 });

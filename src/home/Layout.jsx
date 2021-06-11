@@ -11,6 +11,8 @@ export default class Layout extends Component {
         this.state = {
             portfolio: null
         };
+    }
+    componentDidMount() {
         portfolioService.getPortfolio()
             .then(response => response.json())
             .then(data => this.setState({ portfolio: data }));

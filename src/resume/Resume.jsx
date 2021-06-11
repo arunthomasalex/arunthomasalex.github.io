@@ -12,11 +12,13 @@ function Contact(props) {
             </div>
             <ul>
                 {props.portfolio.contacts.sort((c1, c2) => (c1.name < c2.name) ? -1 : 1).map(contact => {
-                    return (<li key={contact.name}>
-                        <div className="data">
-                            {contact.data}
-                        </div>
-                    </li>);
+                    return (
+                        <li key={contact.name}>
+                            <div className="data">
+                                {contact.data}
+                            </div>
+                        </li>
+                    );
                 })}
                 <li>
                     <div className="data">
@@ -43,7 +45,7 @@ function Skill(props) {
                             <li key={percent}>
                                 <div className="skill_name">
                                     {d[1].map(v => {
-                                        const str= v.name.toLowerCase();
+                                        const str = v.name.toLowerCase();
                                         return str.charAt(0).toUpperCase() + str.slice(1);
                                     }).join(' / ')}
                                     <div className="skill_per">{percent}</div>
@@ -112,6 +114,8 @@ export default class Resume extends Component {
         this.state = {
             portfolio: null
         };
+    }
+    componentDidMount() {
         portfolioService.getPortfolio()
             .then(response => response.json())
             .then(data => this.setState({ portfolio: data }));

@@ -27,8 +27,9 @@ module.exports = merge(common, {
 	externals: {
         config: JSON.stringify({
             portfolioJson: 'https://arunthomasalex.github.io/portfolio/portfolio.json',
-			messageUrl: 'http://127.0.0.1:8000/message/',
-			resumeUrl: '/resume'
+			messageUrl: 'http://127.0.0.1:8000/message',
+			resumeUrl: '/resume',
+			rules: 'http://127.0.0.1:8000/rule'
         })
     }
 });
