@@ -23,26 +23,32 @@ function Contacts(props) {
     );
 }
 
+function memoizeFecth() {
+    const resp = fetch(`${config.rules}/message`).then(resp => resp.json());
+    return () => resp;
+}
+
+const fetchRules = memoizeFecth();
+
 async function validateData(details) {
     try {
-        const resp = await fetch(`${config.rules}/message`);
-        const rules = await resp.json();
+        const rules = await fetchRules()
         let validation = {};
         for (let index in rules) {
             for (let [key, value] of Object.entries(rules[index])) {
                 validation[key] = value.required && !details[key];
                 let { length, email } = value.validations;
-                if(details[key] && length && !validation[key]) {
-                        validation[key] = (length.min && (details[key].length < length.min)) || (length.max && details[key] && details[key].length > length.max);
+                if (details[key] && length && !validation[key]) {
+                    validation[key] = (length.min && (details[key].length < length.min)) || (length.max && details[key] && details[key].length > length.max);
                 }
-                if(email && !validation[key]) {
+                if (email && !validation[key]) {
                     validation[key] = !/^[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[A-Za-z]+)+$/.test(details[key]);
                 }
             }
         }
         validation.valid = () => !Object.values(validation).includes(true);
         return validation;
-    } catch(e) {
+    } catch (e) {
         let validation = {
             name: !details.name,
             email: !/^[a-zA-Z0-9]+@[a-zA-Z0-9]+(\.[A-Za-z]+)+$/.test(details.email),
@@ -63,7 +69,6 @@ function ContactForm() {
         event.preventDefault();
         var details = { name, email, subject, message };
         validateData(details).then(validation => {
-            console.log(validation);
             if (validation.valid()) {
                 var formBody = [];
                 for (let [key, value] of Object.entries(details)) {
