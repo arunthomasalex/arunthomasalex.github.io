@@ -1,11 +1,15 @@
 export function createDatas(portfolio) {
-    let experience = portfolio['experiences'].map(data => data.duration).map(date => {
-        let dates = date.split('-');
-        if (dates.length > 1) {
-            return (Date.parse(dates[1]) - Date.parse(dates[0])) / 1000 / 60 / 60 / 24;
+    const dateCalculation = ([from, to]) => {
+        if(to) {
+            return (Date.parse(to) - Date.parse(from)) / 1000 / 60 / 60 / 24;
         }
-        return (Date.now() - Date.parse(dates[0])) / 1000 / 60 / 60 / 24;
-    }).reduce((p, c) => p + c, 0);
+        return (Date.now() - Date.parse(from)) / 1000 / 60 / 60 / 24
+    }
+    let experience = portfolio['experiences']
+                        .map(data => data.duration)
+                        .map(date => date.split('-'))
+                        .map(dates => dateCalculation(dates))
+                        .reduce((p, c) => p + c, 0);
     experience /= 365;
     return {
         experience: experience.toFixed(1),
